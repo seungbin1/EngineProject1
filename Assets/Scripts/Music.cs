@@ -2,51 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Music : MonoBehaviour
 {
     public Slider mainbackVolume;
     public AudioSource mainaudio;
-    private float mainbackVol = 1f;
+    private static float mainbackVol = 1f;
 
     public Slider gamebackVolume;
     public AudioSource gameaudio;
-    private float gamebackVol = 1f;
+    private static float gamebackVol = 1f;
 
     public Slider bossbackVolume;
     public AudioSource bossaudio;
-    private float bossbackVol = 1f;
+    private static float bossbackVol = 1f;
 
     private float boss;
     // Start is called before the first frame update
     void Start()
     {
+        Init();
         boss = 1f;
-        mainbackVol = PlayerPrefs.GetFloat("mainbackvol", 1f);
-        mainbackVolume.value = mainbackVol;
-        mainaudio.volume = mainbackVolume.value;
-
-        gamebackVol = PlayerPrefs.GetFloat("gamebackvol", 1f);
-        gamebackVolume.value = gamebackVol;
-        gameaudio.volume = gamebackVolume.value;
-
-        bossbackVol = PlayerPrefs.GetFloat("bossbackvol", 1f);
-        bossbackVolume.value = bossbackVol;
-        bossaudio.volume = bossbackVolume.value;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.parent.transform.position.x>450)
+        if (transform.parent != null)
         {
-            bossaudio.mute = false;
-            boss = 0.6f;
-        }
-        else
-        {
-            boss = 1f;
-            bossaudio.mute = true;
+            if (transform.parent.transform.position.x > 450)
+            {
+                bossaudio.mute = false;
+                boss = 0.6f;
+            }
+            else
+            {
+                boss = 1f;
+                bossaudio.mute = true;
+            }
         }
         SoundSlider();
     }
@@ -63,5 +57,19 @@ public class Music : MonoBehaviour
         bossaudio.volume = bossbackVolume.value;
         bossbackVol = bossbackVolume.value;
         PlayerPrefs.SetFloat("bossbackvol", bossbackVol);
+    }
+    private void Init()
+    {
+        mainbackVol = PlayerPrefs.GetFloat("mainbackvol", 1f);
+        mainbackVolume.value = mainbackVol;
+        mainaudio.volume = mainbackVolume.value;
+
+        gamebackVol = PlayerPrefs.GetFloat("gamebackvol", 1f);
+        gamebackVolume.value = gamebackVol;
+        gameaudio.volume = gamebackVolume.value;
+
+        bossbackVol = PlayerPrefs.GetFloat("bossbackvol", 1f);
+        bossbackVolume.value = bossbackVol;
+        bossaudio.volume = bossbackVolume.value;
     }
 }

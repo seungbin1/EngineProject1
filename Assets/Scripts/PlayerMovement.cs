@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(Attacking());
             }
             transform.GetChild(0).transform.localPosition = new Vector3(0, 0, 0);
+            transform.GetChild(1).transform.localPosition = new Vector3(0, 0, 0);
 
             if (!attacking)
             {
@@ -175,11 +176,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale=new Vector3(-5, 5, 5);
             gameObject.transform.GetChild(0).rotation = Quaternion.Euler(gameObject.transform.GetChild(0).rotation.x, gameObject.transform.GetChild(0).rotation.x + 180, gameObject.transform.GetChild(0).rotation.z);
+            gameObject.transform.GetChild(1).rotation = Quaternion.Euler(gameObject.transform.GetChild(1).rotation.x, gameObject.transform.GetChild(1).rotation.x + 180, gameObject.transform.GetChild(1).rotation.z);
         }
         if(run > 0)
         {
             transform.localScale = new Vector3(5, 5, 5);
             gameObject.transform.GetChild(0).rotation = Quaternion.Euler(gameObject.transform.GetChild(0).rotation.x, gameObject.transform.GetChild(0).rotation.x, gameObject.transform.GetChild(0).rotation.z);
+            gameObject.transform.GetChild(1).rotation = Quaternion.Euler(gameObject.transform.GetChild(1).rotation.x, gameObject.transform.GetChild(1).rotation.x, gameObject.transform.GetChild(1).rotation.z);
         }
         float translation = run * speed * Time.deltaTime;
         transform.Translate(translation, 0, 0);
@@ -203,11 +206,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(5, 5, 5);
             gameObject.transform.GetChild(0).rotation = Quaternion.Euler(gameObject.transform.GetChild(0).rotation.x, gameObject.transform.GetChild(0).rotation.x, gameObject.transform.GetChild(0).rotation.z);
+            gameObject.transform.GetChild(1).rotation = Quaternion.Euler(gameObject.transform.GetChild(1).rotation.x, gameObject.transform.GetChild(1).rotation.x, gameObject.transform.GetChild(1).rotation.z);
         }
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
         {
             transform.localScale = new Vector3(-5, 5, 5);
             gameObject.transform.GetChild(0).rotation = Quaternion.Euler(gameObject.transform.GetChild(0).rotation.x, gameObject.transform.GetChild(0).rotation.x + 180, gameObject.transform.GetChild(0).rotation.z);
+            gameObject.transform.GetChild(1).rotation = Quaternion.Euler(gameObject.transform.GetChild(1).rotation.x, gameObject.transform.GetChild(1).rotation.x + 180, gameObject.transform.GetChild(1).rotation.z);
         }
     }
 

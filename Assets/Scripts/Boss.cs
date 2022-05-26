@@ -184,7 +184,7 @@ public class Boss : MonoBehaviour
     {
         dead = true;
         Instantiate(BossFire, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         PlayerMovement.stopButton.SetActive(false);
         PlayerMovement.win.SetActive(true);
         Time.timeScale = 0;

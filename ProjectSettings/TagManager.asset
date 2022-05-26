@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sword
+  - Enemy
+  - Ladder
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -11,15 +15,15 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Weapon
+  - Obstacle
+  - Ladder
+  - Sword
+  - Enemy
+  - Hell-Gato
+  - Tree
   - 
   - 
   - 
